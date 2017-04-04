@@ -1,48 +1,23 @@
-# Foundation for Sites Template
+# Foundation 6 SASS starter Template
 
-**Please open all issues with this template on the main [Foundation for Sites](https://github.com/zurb/foundation-sites/issues) repo.**
-
-This is the basic starter project for [Foundation for Sites 6](http://foundation.zurb.com/sites). It includes a Sass compiler and a starter HTML file for you.
+**Please open all issues with this template on the main [Foundation for Sites](https://github.com/thelazycoders/f6-starter-template/issues) repo.**
 
 ## Installation
 
-To use this template, your computer needs:
-
-- [NodeJS](https://nodejs.org/en/) (0.12 or greater)
-- [Git](https://git-scm.com/)
-
-This template can be installed with the Foundation CLI, or downloaded and set up manually.
-
-### Using the CLI
-
-Install the Foundation CLI with this command:
-
 ```bash
-npm install foundation-cli --global
+git clone https://github.com/thelazycoders/f6-starter-template.git
 ```
 
-Use this command to set up a blank Foundation for Sites project with this template:
+Then open the project folder in your command line, and install the needed dependencies:
 
 ```bash
-foundation new --framework sites --template basic
-```
-
-The CLI will prompt you to give your project a name. The template will be downloaded into a folder with this name.
-
-### Manual Setup
-
-To manually set up the template, first download it with Git:
-
-```bash
-git clone https://github.com/zurb/foundation-sites-template projectname
-```
-
-Then open the folder in your command line, and install the needed dependencies:
-
-```bash
-cd projectname
 npm install
+```
+And for bower components
+
+```bash
+cd src
 bower install
 ```
 
-Finally, run `npm start` to run the Sass compiler. It will re-run every time you save a Sass file.
+Finally, run `gulp` to run the Sass compiler and 'gulp js' to concat and minify Js files(Include certain Foundation Plugins or Js file in gulpfile.js). It will re-run every time you save a Sass or Js file.
