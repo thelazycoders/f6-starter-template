@@ -24,12 +24,12 @@ bower install
 * Uncomment necessary SCSS components.
 * By default only `foundation.core.js` and `foundation.util.mediaQuery.js` are enabled. To enable other certain Plugins Uncomment them in gulpfile.js
 
-##Run Task
-###open the project folder from Terminal/Command line and run the command you need.
+## Run Task
+### open the project folder from Terminal/Command line and run the command you need.
 
 * `gulp` will Compile SASS. It wil also concat and minify all js files
 
-#####Watch Files for Changes
+##### Watch Files for Changes
 
 * `gulp watch` will watch `src/scss` and `src/js` directory.
 * `gulp sass` will watch `src/scss` directory.
