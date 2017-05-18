@@ -11,7 +11,7 @@ var sassPaths = [
 ];
 
 
-gulp.task('sass', function() {
+gulp.task('styles', function() {
   return gulp.src('src/scss/app.scss')
     .pipe($.sass({
       includePaths: sassPaths,
@@ -28,9 +28,42 @@ gulp.task('sass', function() {
 var jsFiles = [
     'src/bower_components/jquery/dist/jquery.js',
     'src/bower_components/what-input/dist/what-input.js',
+    
+    /*--- foundation core file ---*/
     'src/bower_components/foundation-sites/dist/js/plugins/foundation.core.js',
+    
+    /*--- foundation util files ---*/
     'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.mediaQuery.js',
-    'src/js/app.js'
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.keyboard.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.box.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.motion.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.nest.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.timerAndImageLoader.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.util.triggers.js',
+    
+    /*--- foundation plugins ---*/
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.abide.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.accordion.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.accordionMenu.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.drilldown.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.dropdown.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.dropdownMenu.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.equalizer.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.interchange.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.magellan.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.offcanvas.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.orbit.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.responsiveMenu.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.responsiveToggle.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.reveal.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.slider.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.sticky.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.tabs.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.toggler.js',
+    //'src/bower_components/foundation-sites/dist/js/plugins/foundation.tooltip.js',
+
+    //All js files from src/js directory
+    'src/js/*.js'
 ];
 
 gulp.task('scripts', function() {  
@@ -39,8 +72,19 @@ gulp.task('scripts', function() {
         .pipe(uglify())
         .pipe(gulp.dest('app/assets/js'));
 });
-gulp.task('default', ['sass'], function() {
-  gulp.watch(['src/scss/**/*.scss'], ['sass']);
+
+// Run styles, site-js and foundation-js
+gulp.task('default', function() {
+  gulp.start('styles', 'scripts');
+});
+
+//watch tasks
+gulp.task('watch', ['styles'], function() {
+  gulp.watch(['src/scss/**/*.scss'], ['styles']);
+  gulp.watch(['src/js/*.js', 'bower_components/foundation-sites/dist/js/**/*.js'], ['scripts']);
+});
+gulp.task('sass', ['styles'], function() {
+  gulp.watch(['src/scss/**/*.scss'], ['styles']);
 });
 gulp.task('js', ['scripts'], function() {
   gulp.watch(['src/js/*.js', 'bower_components/foundation-sites/dist/js/**/*.js'], ['scripts']);
