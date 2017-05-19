@@ -79,7 +79,7 @@ gulp.task('default', function() {
 });
 
 //watch tasks
-gulp.task('watch', ['styles'], function() {
+gulp.task('watch', ['styles', 'scripts'], function() {
   gulp.watch(['src/scss/**/*.scss'], ['styles']);
   gulp.watch(['src/js/*.js', 'bower_components/foundation-sites/dist/js/**/*.js'], ['scripts']);
 });
